@@ -6,7 +6,7 @@
             let gameTickCount = 0;
             let launchTicks = 0;
             function gameBoot() {
-                launchTicks = parseInt(document.cookie
+                launchTicks = 0+parseInt(document.cookie
                     .split('; ')
                     .find((row) => row.startsWith('totalTicks='))
                     ?.split('=')[1]);
