@@ -10,6 +10,7 @@
             function gameBoot() {
                 if (isNaN(gameTickCount)) {
                     gameTickCount = 0
+                    console.log('no game ticks')
                 }
                 window.setInterval("gameTick()", 100);
             };
