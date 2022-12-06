@@ -3,10 +3,15 @@
     <head>
         <title>test game :)</title>
         <script>
-            let gameTickCount = parseInt(document.cookie
-                    .split('; ')
-                    .find((row) => row.startsWith('totalTicks='))
-                    ?.split('=')[1]);
+            let saveManger = {
+                "save": function(variableName, data) {
+                    document.cookie = `${variableName}=${gameTickCount};SameSite=None;Secure`
+                },
+                "load": function(variableName) {
+                    return document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1]
+                }
+            }
+            let gameTickCount = parseInt(saveManger.load('totalTicks'));
             function gameBoot() {
                 if (isNaN(gameTickCount)) {
                     gameTickCount = 0
@@ -17,7 +22,7 @@
                 gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
-                    document.cookie = `totalTicks=${gameTickCount};SameSite=None;Secure`
+                    saveManger.save('totalTicks', gameTickCount)
                 }
             };
             
