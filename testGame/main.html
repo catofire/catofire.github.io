@@ -3,13 +3,22 @@
     <head>
         <title>test game :)</title>
         <script>
-            let number = 0;
+            let gameTickCount = 0;
+            let launchTicks
             function gameBoot() {
+                launchTicks = document.cookie
+                    .split('; ')
+                    .find((row) => row.startsWith('totalTicks='))
+                    ?.split('=')[1];
+
                 window.setInterval("gameTick()", 100);
             };
             function gameTick() {
-                number++;
+                gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = number;
+                if (gameTickCount%10 == 0) {
+                    document.cookie = `totalTicks=${launchTicks+gameTickCount}`
+                }
             };
             
         </script>
