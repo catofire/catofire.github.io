@@ -3,6 +3,9 @@
     <head>
         <script>
             let number = 0;
+            function gameBoot() {
+                setInterval(gameTick(), 100);
+            }
             function gameTick() {
                 number++;
                 document.getElementById("numberThatGoesUp").innerHTML = number;
@@ -15,7 +18,7 @@
         p    {color: white;}
         </style>
         </head>
-<body onload="setInterval(gameTick(), 100)">
+<body onload="gameBoot">
 <h1 id ="numberThatGoesUp">NUMBER</h1>
 <p>goes up</p>
 </body>
