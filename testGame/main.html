@@ -16,7 +16,7 @@
                 gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
-                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None;secure`
+                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None;Secure`
                 }
             };
             
