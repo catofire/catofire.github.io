@@ -6,18 +6,17 @@
             let gameTickCount = 0;
             let launchTicks = 0
             function gameBoot() {
-                launchTicks = document.cookie
+                launchTicks = parseInt(document.cookie
                     .split('; ')
                     .find((row) => row.startsWith('totalTicks='))
-                    ?.split('=')[1];
-
+                    ?.split('=')[1]);
                 window.setInterval("gameTick()", 100);
             };
             function gameTick() {
                 gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
-                    document.cookie = `totalTicks=${launchTicks+gameTickCount}`
+                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None`
                 }
             };
             
