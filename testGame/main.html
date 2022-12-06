@@ -15,7 +15,7 @@
             };
             function gameTick() {
                 gameTickCount++;
-                document.getElementById("numberThatGoesUp").innerHTML = number;
+                document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
                     document.cookie = `totalTicks=${launchTicks+gameTickCount}`
                 }
@@ -30,6 +30,6 @@
         </head>
 <body onload="gameBoot()">
     <h1 id ="numberThatGoesUp">NUMBER</h1>
-    <p>nyehehehe</p>
+    <p>nyehehehe >:)</p>
     </body>
 </html>
