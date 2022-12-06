@@ -3,20 +3,21 @@
     <head>
         <title>test game :)</title>
         <script>
-            let gameTickCount = 0;
-            let launchTicks = 0;
-            function gameBoot() {
-                launchTicks = 0+parseInt(document.cookie
+            let gameTickCount = parseInt(document.cookie
                     .split('; ')
                     .find((row) => row.startsWith('totalTicks='))
                     ?.split('=')[1]);
+            function gameBoot() {
+                if (typeof(gameTickCount) !== 'number') {
+                    gameTickCount = 0
+                }
                 window.setInterval("gameTick()", 100);
             };
             function gameTick() {
                 gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
-                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None;Secure`
+                    document.cookie = `totalTicks=${gameTickCount};SameSite=None;Secure`
                 }
             };
             
