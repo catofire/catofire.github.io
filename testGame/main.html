@@ -8,7 +8,7 @@
                     .find((row) => row.startsWith('totalTicks='))
                     ?.split('=')[1]);
             function gameBoot() {
-                if (typeof(gameTickCount) !== 'number') {
+                if (isNaN(gameTickCount)) {
                     gameTickCount = 0
                 }
                 window.setInterval("gameTick()", 100);
