@@ -7,7 +7,7 @@
                 number++;
                 document.getElementById("numberThatGoesUp").innerHTML = number;
             };
-            setInterval(gameTick(), 100)
+            
         </script>
         <style>
         body {background-color: black;}
@@ -15,7 +15,7 @@
         p    {color: white;}
         </style>
         </head>
-<body>
+<body onload="setInterval(gameTick(), 100)">
 <h1 id ="numberThatGoesUp">NUMBER</h1>
 <p>goes up</p>
 </body>
