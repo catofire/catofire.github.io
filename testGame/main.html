@@ -4,7 +4,7 @@
         <title>test game :)</title>
         <script>
             let gameTickCount = 0;
-            let launchTicks = 0
+            let launchTicks = 0;
             function gameBoot() {
                 launchTicks = parseInt(document.cookie
                     .split('; ')
@@ -16,7 +16,7 @@
                 gameTickCount++;
                 document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
                 if (gameTickCount%10 == 0) {
-                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None`
+                    document.cookie = `totalTicks=${launchTicks+gameTickCount};SameSite=None;secure`
                 }
             };
             
