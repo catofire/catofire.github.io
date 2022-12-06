@@ -3,10 +3,11 @@
     <head>
         <script>
             let number = 0;
-            function numberGoUp() {
-                number++
-                document.getElementById("numberThatGoesUp").innerHTML = number
-            }
+            function gameTick() {
+                number++;
+                document.getElementById("numberThatGoesUp").innerHTML = number;
+            };
+            setInterval(gameTick(), 100)
         </script>
         <style>
         body {background-color: black;}
