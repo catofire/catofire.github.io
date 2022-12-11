@@ -10,7 +10,7 @@
                 "load": function(variableName) {
                     return document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1]
                 }
-            }
+            };
             let gameTickCount = parseInt(saveManger.load('totalTicks'));
             function gameBoot() {
                 if (isNaN(gameTickCount)) {
