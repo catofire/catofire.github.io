@@ -11,6 +11,17 @@
                     return document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1]
                 }
             };
+            let gameActions = {
+                "dream" : function() {
+                    if (gameData.will > 0) {
+                        gameData.will = gameData.will + 0.1
+                    }
+                }
+            }
+            let gameData = {
+                "log" : "",
+                "awake" : false
+            }
             let gameTickCount = parseInt(saveManger.load('totalTicks'));
             function gameBoot() {
                 if (isNaN(gameTickCount)) {
@@ -20,11 +31,18 @@
             };
             function gameTick() {
                 gameTickCount++;
-                document.getElementById("numberThatGoesUp").innerHTML = gameTickCount;
+                document.getElementById("numberThatGoesUp").innerHTML = gameTickCount/10;
                 if (gameTickCount%10 == 0) {
                     saveManger.save('totalTicks', gameTickCount)
                 }
+
             };
+            let reset = function() {
+                gameTickCount = 0;
+                gameData = {
+                    "log" : ""
+                }
+            }
             
         </script>
         <style>
@@ -36,5 +54,7 @@
 <body onload="gameBoot()">
     <h1 id ="numberThatGoesUp">NUMBER</h1>
     <p>nyehehehe >:)</p>
+    <br><br><br>
+    <button onclick="reset()">RESET GAME</button>
     </body>
 </html>
