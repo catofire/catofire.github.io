@@ -8,25 +8,27 @@
                     document.cookie = `${variableName}=${gameTickCount};SameSite=None;Secure`
                 },
                 "load": function(variableName) {
-                    return document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1]
+                    out = document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1];
+                    if (isNaN(out)) {
+                        return 0
+                    } 
+                    return out
                 }
             };
             let gameActions = {
                 "dream" : function() {
                     if (gameData.will > 0) {
-                        gameData.will = gameData.will + 0.1
+                        gameData.will = math.Max(gameData.will+1*gameData.dreams, gameData.will+0.1)
                     }
                 }
             }
             let gameData = {
                 "log" : "",
-                "awake" : false
+                "will" : saveManger.load(will),
+                "awake" : false,
             }
             let gameTickCount = parseInt(saveManger.load('totalTicks'));
             function gameBoot() {
-                if (isNaN(gameTickCount)) {
-                    gameTickCount = 0
-                }
                 window.setInterval("gameTick()", 100);
             };
             function gameTick() {
@@ -40,7 +42,8 @@
             let reset = function() {
                 gameTickCount = 0;
                 gameData = {
-                    "log" : ""
+                    "log" : "",
+                    will : 0,
                 }
             }
             
@@ -49,7 +52,7 @@
         body {background-color: black;}
         mark {
               background-color: blue;
-              color: white;
+              color: black;
             }
         h1   {color: white;}
         p    {color: white;}
