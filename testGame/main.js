@@ -52,4 +52,4 @@ for (let i = 0; i < 100;i++) {
 
 newBattleGridUI(gameState.cells)
 
-setInterval(updateGameState, 10)
+setInterval(updateGameState, 100)
