@@ -21,7 +21,7 @@ updateBattleGridUI = function(cells){
     try {
         for (cellID in cells) {
             let cell = cells[cellID]
-            let cellUI = document.getElementById("battleGrid")
+            let cellUI = document.getElementById(`cell${cellID}`)
             cellUI.style.backgroundColor = `rgb(${cell.color[0]},${cell.color[1]},${cell.color[2]})`
         }
     }
