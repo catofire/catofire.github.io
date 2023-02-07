@@ -1,0 +1,9 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.cell{
+    border: 1%;
+    border-color: white;
+}

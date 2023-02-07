@@ -1,65 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>test game :)</title>
-        <script>
-            let saveManger = {
-                "save": function(variableName, data) {
-                    document.cookie = `${variableName}=${gameTickCount};SameSite=None;Secure`
-                },
-                "load": function(variableName) {
-                    out = document.cookie.split('; ').find((row) => row.startsWith('totalTicks='))?.split('=')[1];
-                    if (isNaN(out)) {
-                        return 0
-                    } 
-                    return out
-                }
-            };
-            let gameActions = {
-                "dream" : function() {
-                    if (gameData.will > 0) {
-                        gameData.will = math.Max(gameData.will+1*gameData.dreams, gameData.will+0.1)
-                    }
-                }
-            }
-            let gameData = {
-                "log" : "",
-                "will" : saveManger.load(will),
-                "awake" : false,
-            }
-            let gameTickCount = parseInt(saveManger.load('totalTicks'));
-            function gameBoot() {
-                window.setInterval("gameTick()", 100);
-            };
-            function gameTick() {
-                gameTickCount++;
-                document.getElementById("numberThatGoesUp").innerHTML = gameTickCount/10;
-                if (gameTickCount%10 == 0) {
-                    saveManger.save('totalTicks', gameTickCount)
-                }
-
-            };
-            let reset = function() {
-                gameTickCount = 0;
-                gameData = {
-                    "log" : "",
-                    will : 0,
-                }
-            }
-            
-        </script>
-        <style>
-        body {background-color: black;}
-        mark {
-              background-color: blue;
-              color: black;
-            }
-        h1   {color: white;}
-        p    {color: white;}
-        </style>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>test game :)</title>  
         </head>
     <body>
-        <p>nyehehehe >:)</p>
+        <div style="width: 50px; height:50px;" class="cell"> </div>
+        <p class ="cell">nyehehehe >:)</p>
+        <script type="text/javascript" src="ui.js"></script>
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
