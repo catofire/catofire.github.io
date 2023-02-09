@@ -9,7 +9,7 @@ function updateGameState() {
     const cellID = Math.floor(Math.random()*gameState.cells.length)
     let targetCellID = getTargetEvo(cellID)
     gameState.cells[targetCellID] = new cell(gameState.cells[cellID])
-    if (gameState.ticks%10 == 0) {
+    if (Math.floor(gameState.ticks%(UpdateSpeed/tickSpeed)) == 0) {
         updateBattleGridUI(gameState.cells)
     }
 }
@@ -23,7 +23,7 @@ function getTargetEvo(cellID) {
     let neighbors = getNeighbors(cellID, 10, gameState.cells.length);
     let cellTarget = gameState.cells[cellID].target
     let dot = (a, b) => a.map((x, i) => a[i] * b[i]).reduce((m, n) => m + n);
-    return neighbors.sort((a,b) => dot(cellTarget, gameState.cells[a].color)-dot(cellTarget,gameState.cells[b].color))[0];
+    return neighbors.sort((a,b) => dot(cellTarget, gameState.cells[b].color)-dot(cellTarget,gameState.cells[a].color))[0];
 }
 
 function getNeighbors(pos, width, length) {
@@ -61,8 +61,7 @@ function randomCell () {
         "target" : [Math.random()*2-1,Math.random()*2-1,Math.random()*2-1],
         "targetMutation" : 0.1,
         "mutation" : {
-            "color" : 100,
-            "target" : 0.1
+            "color" : 10,
         },
     }
     return baseData
@@ -73,4 +72,6 @@ for (let i = 0; i < 100;i++) {
 
 newBattleGridUI(gameState.cells)
 
-setInterval(updateGameState, 10)
+let tickSpeed = 20;
+let UpdateSpeed = 100;
+setInterval(updateGameState, 20)

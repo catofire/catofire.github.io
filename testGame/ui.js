@@ -12,6 +12,8 @@ function setFocusCell(cellID) {
             case "color":
                 str +=`R:${cell[attribute][0]} <br> G:${cell[attribute][1]} <br> B:${cell[attribute][2]} <br>`
                 break;
+            case "minMax":
+                break;
             default:
                 str+= `${attribute}:${cell[attribute]} <br>`
         }

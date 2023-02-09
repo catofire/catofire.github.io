@@ -1,9 +1,10 @@
 class cell {
     constructor(baseData) {
         this.color = [...baseData.color];
-        this.target = baseData.target;
+        this.target = [...baseData.target];
         this.minMax = {
-            "color" : [0,255]
+            "color" : [0,255],
+            'mutation' :[-100,100]
         }
         this.mutation = baseData.mutation;
         for (let mutagen in this.mutation) {
