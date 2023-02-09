@@ -2,6 +2,7 @@ class cell {
     constructor(baseData) {
         this.color = [...baseData.color];
         this.target = [...baseData.target];
+        this.getTarget = baseData.getTarget
         this.minMax = {
             "color" : [0,255],
             'mutation' :[-100,100]
