@@ -12,7 +12,7 @@ body {
 
 .cell{
     background-color: black;
-    color: gray;
+    color: darkgray;
     padding: 10px;
     grid-row-start: 1;
     text-align: center;
