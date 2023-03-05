@@ -5,9 +5,9 @@ class cell {
         this.getTarget = baseData.getTarget
         this.minMax = {
             "color" : [0,255],
-            'mutation' :[-100,100]
+            "mutation" : [0,300]
         }
-        this.mutation = baseData.mutation;
+        this.mutation = {...baseData.mutation}
         for (let mutagen in this.mutation) {
             for(let mutagenID in this[mutagen]) {
                 this[mutagen][mutagenID] += this.mutation[mutagen]*Math.random()-this.mutation[mutagen]/2

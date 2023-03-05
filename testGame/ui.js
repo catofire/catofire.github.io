@@ -10,12 +10,22 @@ function setFocusCell(cellID) {
     for(let attribute in cell) {
         switch (attribute) {
             case "color":
-                str +=`R:${cell[attribute][0]} <br> G:${cell[attribute][1]} <br> B:${cell[attribute][2]} <br>`
+                str +=`R:${cell[attribute][0]} <br> G:${cell[attribute][1]} <br> B:${cell[attribute][2]} <br>`;
+                break;
+            case "mutation":
+                str +=`Mutations <br> ---------- <br>`;
+                for(let mutationFactor in cell[attribute]) {
+                    str+=`${mutationFactor}:${cell[attribute][mutationFactor]} <br>`;
+                };
+                str += '---------- <br>';
                 break;
             case "minMax":
                 break;
+            case "getTarget":
+                str+= `Targeting Function: ${cell.getTarget.name} <br>`;
+                break;
             default:
-                str+= `${attribute}:${cell[attribute]} <br>`
+                str+= `${attribute}:${cell[attribute]} <br>`;
         }
     }
     readOut.innerHTML = str
@@ -27,8 +37,8 @@ function newBattleGridUI(cells) {
         let cellUI = document.createElement("div")
         cellUI.id = `cell${cellID}`
         cellUI.className = 'cell'
-        cellUI.style.gridArea = `${Math.floor(cellID/10)+1} / ${cellID%10+1}`
-        cellUI.textContent = `${cellID}`
+        cellUI.style.gridArea = `${Math.floor(cellID/width)+1} / ${cellID%width+1}`
+        //cellUI.textContent = `${cellID}`
         cellUI.style.backgroundColor = `rgb(${cell.color[0]},${cell.color[1]},${cell.color[2]})`
         cellUI.onclick = function() {setFocusCell(cellID)}
         battleGrid.appendChild(cellUI)
